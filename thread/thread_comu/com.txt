@@ -1,0 +1,27 @@
+#使用进程之间的全局变量通信
+#同步互斥
+#　　共享资源（临界资源）：多个进程或者线程都可以操作的资源
+#　　临界区　指一段代码　对临界资源操作的代码教＝叫临界区
+#  同步：合作关系，是为了完成任务，多进程或者线程之间进行一种协调，按照一定步骤执行临界资源
+#  互斥：互斥是一种制约关系，当一个线程执行时，该线程会加锁，此刻，另一个线程就不会操作，带解锁后才可以操作
+
+1.event
+
+from threading import Thread,Event
+#创建Event
+e = Event()
+#阻塞函数，等待e被set
+e.wait([timeout])
+#设置Event状态为set状态,为结束wait函数设置条件
+e.set()
+#将e变回未设置状态
+e.clear()
+#判断e的当前状态,被设置返回True , 默认False  
+e.is_set()
+
+2.lock 线程锁
+from threading import Lock
+lock = Lock()#创建锁
+lock.acquire()＃上锁
+lock.release() ＃解锁
+with lock 临时上锁，待临界区代码结束后自动解锁

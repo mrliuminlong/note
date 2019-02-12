@@ -1,0 +1,22 @@
+集成线程和进程　套接字一起，可方便运用
+
+import socketserver
+
+功能：通过模块提供的不同类帮助处理
+
+例如：
+　　　DatagramRequestHandler 　　处理数据报套接字请求　与udp结合
+　　　StreamRequestHandler  　　　处理流式套接字请求　　与tcp结合
+　　　UDPserver   构建udp服务端
+     TCPserver　　构建tcp服务端
+     ForkingMixIn　　　构建多进程并发
+     ForkingTCPserver　　构建多进程并发＋tcp服务端
+     ForkingUDPserver　　构建多进程并发+UDPserver
+     ThrreadingMixin 创建多线程并发
+     ThreadingTCPserver  构建多线程并发＋tcp服务端
+
+使用步骤：
+　　　1.创建服务器类　选择TCPserver或者UDPserver 以及多进程并发或者多线程并发
+　　　2.创建请求处理类　根据选择的服务器类型，选择数据报还是流式
+　　　3.通过服务器类创建服务器对象，并绑定请求
+　　　4.通过serve_forever()接口启动服务
